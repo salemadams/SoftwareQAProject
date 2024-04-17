@@ -57,7 +57,7 @@ public class Tests
     }
 
     //MORE WORK
-    /*
+    
     [Test]  //preq-UNIT-TEST-6	
     public void Divide_Zero_ReturnsError()
     {
@@ -65,9 +65,9 @@ public class Tests
         double x = 10, y = 0;
         
         //assert
-        Assert.Throws<DivideByZeroException>(CalculatorEngine.Divide(x, y));
+        Assert.Throws<DivideByZeroException>(() => CalculatorEngine.Divide(x, y));
     }
-    */
+    
 
     [Test]  //preq-UNIT-TEST-7	
     public void Equals_OverEightPrecision_ReturnsOne()
@@ -82,7 +82,7 @@ public class Tests
         Assert.That(result, Is.EqualTo(true));
     }
 
-    [Test]  ////preq-UNIT-TEST-7
+    [Test]  //preq-UNIT-TEST-7
     public void Equals_UnderEightPrecision_ReturnsZero()
     {
         //arrange
@@ -95,7 +95,7 @@ public class Tests
         Assert.That(result, Is.EqualTo(false));
     }
 
-    [Test] //preq-UNIT-TEST-8	
+    [Test]  //preq-UNIT-TEST-8	
     public void CalculatorEngine_RaiseXToY_ReturnsProduct()
     {
         //arrange
@@ -115,16 +115,65 @@ public class Tests
         double x = 25, y = 5;
         
         //act
-        double result = CalculatorEngine.Log(25, 5);
+        double result = CalculatorEngine.Log(x, y);
         
         //assert
         Assert.That(result, Is.EqualTo(2));
     }
     
-    //preq-UNIT-TEST-10	FILL IN LATER
-    //preq-UNIT-TEST-11	FILL IN LATER
-    //preq-UNIT-TEST-12	FILL IN LATER
-    //preq-UNIT-TEST-13	FILL IN LATER
+    [Test]  //preq-UNIT-TEST-10
+    public void CalculatorEngine_LogOfNegative_ReturnsError()
+    {
+        //arrange
+        double x = -25, y = 5;
+        
+        //act
+        double result = CalculatorEngine.Log(x, y);
+
+        //assert
+        Assert.IsTrue(double.IsNaN(result));
+        
+    }
+    
+    [Test]  //preq-UNIT-TEST-11
+    public void CalculatorEngine_ALogZero_ReturnsError()
+    {
+        //arrange
+        double x = 2, y = 0;
+        
+        //act
+        double result = CalculatorEngine.Log(x, y);
+
+        //assert
+        Assert.IsTrue(double.IsNaN(result));
+        
+    }
+
+    [Test] //preq-UNIT-TEST-12
+    public void CalculatorEngine_ARootB_ReturnsRoot()
+    {
+        //arrange
+        double x = 8, y = 3;
+        
+        //act
+        double result = CalculatorEngine.Root(x, y);
+
+        //assert
+        Assert.That(result, Is.EqualTo(2));
+    }
+
+    [Test] //preq-UNIT-TEST-13 CHECK WITH PROFESSOR
+    public void CalculatorEngine_ARootZero_ReturnsError()
+    {
+        //arrange
+        double x = 8, y = 0;
+        
+        //act
+        double result = CalculatorEngine.Root(x, y);
+
+        //assert
+        Assert.IsTrue(double.IsNaN(result));
+    }
 
     [Test]  //preq-UNIT-TEST-14	
     public void CalculatorEngine_FactorialOfX_ReturnsProduct()

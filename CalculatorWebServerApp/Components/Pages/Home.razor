@@ -1,4 +1,5 @@
 ﻿@page "/"
+@using CalculatorWebServerApp.Components.Data
 
 <PageTitle>Home</PageTitle>
 
@@ -7,14 +8,14 @@
     <div>
         <text>Calculator</text>
         <button>Clear</button>
-        <p>@_result</p>
+        <p>@_calculatorData.result</p>
     </div>
     
     <div>
         <text>Input A</text>
-        <input placeholder="0" @bind-value="_inputA"/>
+        <input placeholder="0" @bind-value="_calculatorData.inputA"/>
         <text>Input B</text>
-        <input placeholder="0" @bind-value="_inputB"/>
+        <input placeholder="0" @bind-value="_calculatorData.inputB"/>
     </div>
     <section>
         <div>
@@ -42,12 +43,11 @@
 
 @code {
 
-    private string _inputA = "", _inputB = "";
-    private double _result = 0;
+    CalculatorData _calculatorData = new();
     private void Add()
     {
-        CheckIfInteger(_inputA, _inputB);
-        _result = CalculatorEngine.CalculatorEngine.Add(int.Parse(_inputA), int.Parse(_inputB));
+        CheckIfInteger(_calculatorData.inputA, _calculatorData.inputB);
+        _calculatorData.result = CalculatorEngine.CalculatorEngine.Add(int.Parse(_calculatorData.inputA), int.Parse(_calculatorData.inputB));
         
     }
 

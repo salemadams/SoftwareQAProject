@@ -51,12 +51,12 @@ public class CalculatorEngine
     }
     
     //preq-ENGINE-11
-    /*
-     public static double SquareRoot(double x)
-    {
-        //REVIEW MORE
+     public static double Root(double x, double y)
+     {
+         if (y == 0) return double.NaN;
+        return Math.Pow(x, 1.0 / y);
     }
-    */
+    
     
     //preq-ENGINE-12
     public static double Factorial(double x)
