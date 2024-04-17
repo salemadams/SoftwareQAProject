@@ -1,21 +1,22 @@
 ﻿@page "/"
+@using CalculatorEngine
 @using CalculatorWebServerApp.Components.Data
+@rendermode InteractiveServer
 
 <PageTitle>Home</PageTitle>
 
-<body>
 <div>
     <div>
         <text>Calculator</text>
         <button>Clear</button>
-        <p>@_calculatorData.result</p>
+        <p>@_calculatorData.Result</p>
     </div>
     
     <div>
         <text>Input A</text>
-        <input placeholder="0" @bind-value="_calculatorData.inputA"/>
+        <input placeholder="0" @bind-value="_calculatorData.InputA"/>
         <text>Input B</text>
-        <input placeholder="0" @bind-value="_calculatorData.inputB"/>
+        <input placeholder="0" @bind-value="_calculatorData.InputB"/>
     </div>
     <section>
         <div>
@@ -39,24 +40,24 @@
         </div>
     </section>
 </div>
-</body>
 
 @code {
 
     CalculatorData _calculatorData = new();
+    
     private void Add()
     {
-        CheckIfInteger(_calculatorData.inputA, _calculatorData.inputB);
-        _calculatorData.result = CalculatorEngine.CalculatorEngine.Add(int.Parse(_calculatorData.inputA), int.Parse(_calculatorData.inputB));
-        
+        CheckIfInteger(_calculatorData.InputA, _calculatorData.InputB);
+        double result = CalculatorEngine.Add(int.Parse(_calculatorData.InputA), int.Parse(_calculatorData.InputB));
+        _calculatorData.Result = Convert.ToDouble(result.ToString());
     }
 
     private void CheckIfInteger(string a, string b)
     {
         try
         {
-            int.Parse(a);
-            int.Parse(b);
+           // int.Parse(a);
+           // int.Parse(b);
         }
         catch (Exception e)
         {

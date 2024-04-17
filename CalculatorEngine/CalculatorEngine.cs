@@ -27,6 +27,10 @@ public class CalculatorEngine
     public static double Divide(double x, double y)
     {
         return x / y;
+
+        //var result = x / y;
+        //if (double.IsInfinity((result))) return errorState
+        //else return resulkt;
     }
     
     //preq-ENGINE-8
@@ -53,7 +57,7 @@ public class CalculatorEngine
     //preq-ENGINE-11
      public static double Root(double x, double y)
      {
-         if (y == 0) return double.NaN;
+         if (y == 0) return double.NaN; //CHECK WITH PROFESSOR
         return Math.Pow(x, 1.0 / y);
     }
     
