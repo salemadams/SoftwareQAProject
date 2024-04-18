@@ -4,96 +4,242 @@ using System;
 public class CalculatorEngine
 {
     private const int Precision = 8;
-
+    private Result _Result;
+    
     //preq-ENGINE-3
-    public static double Add(double x, double y)
+    public Result Add(double x, double y)
     {
-        return x + y;
+        _Result = new Result
+        {
+            IsSuccess = true,
+            Output = x + y
+        };
+        return _Result;
     }
 
     //preq-ENGINE-4
-    public static double Subtract(double x, double y)
+    public Result Subtract(double x, double y)
     {
-        return x - y;
+        _Result = new Result
+        {
+            IsSuccess = true,
+            Output = x - y
+        };
+        return _Result;
     }
 
     //preq-ENGINE-5
-    public static double Multiply(double x, double y)
+    public Result Multiply(double x, double y)
     {
-        return x * y;
+        _Result = new Result
+        {
+            IsSuccess = true,
+            Output = x * y
+        };
+        return _Result;
     }
     
     //preq-ENGINE-7
-    public static double Divide(double x, double y)
+    public Result Divide(double x, double y)
     {
-        return x / y;
-
-        //var result = x / y;
-        //if (double.IsInfinity((result))) return errorState
-        //else return resulkt;
+        var result = x / y;
+        if (double.IsInfinity(result))
+        {
+            _Result = new Result
+            {
+                IsSuccess = false,
+                ErrorMessage = "Division by Zero"
+            };
+        }
+        else
+        {
+            _Result = new Result
+            {
+                IsSuccess = true,
+                Output = x / y
+            };
+        }
+        return _Result;
     }
     
     //preq-ENGINE-8
-    public static bool Equals(double x, double y)
+    public Result Equals(double x, double y)
     {
         var tolerance = Math.Pow(10, -Precision);
         var absoluteValueOfDiff = Math.Abs(x - y);
         var isWithinTolerance = absoluteValueOfDiff <= tolerance;
-        return isWithinTolerance;
+        if (isWithinTolerance)
+        {
+            _Result = new Result
+            {
+                IsSuccess = true,
+                Output = 1
+            };
+        }
+        else
+        {
+            _Result = new Result
+            {
+                IsSuccess = true,
+                Output = 0
+            };
+        }
+        return _Result;
     }
     
     //preq-ENGINE-9
-    public static double Power(double x, double y)
+    public Result Power(double x, double y)
     {
-        return Math.Pow(x, y);
+        _Result = new Result
+        {
+            IsSuccess = true,
+            Output = Math.Pow(x, y)
+        };
+        return _Result;
     }
     
     //preq-ENGINE-10
-    public static double Log(double x, double y)
+    public Result Log(double x, double y)
     {
-        return Math.Log(x, y);
+        if (x <= 0)
+        {
+            _Result = new Result
+            {
+                IsSuccess = false,
+                ErrorMessage = "Negative Logarithm Input"
+            };
+        }
+        else if (y == 0)
+        {
+            _Result = new Result
+            {
+                IsSuccess = false,
+                ErrorMessage = "Base of Zero"
+            };
+        }
+        else
+        {
+            _Result = new Result
+            {
+                IsSuccess = true,
+                Output = Math.Log(x, y)
+            };
+        }
+        return _Result;
     }
     
     //preq-ENGINE-11
-     public static double Root(double x, double y)
+     public Result Root(double x, double y)
      {
-         if (y == 0) return double.NaN; //CHECK WITH PROFESSOR
-        return Math.Pow(x, 1.0 / y);
+         if (y == 0)
+         {
+             _Result = new Result
+             {
+                 IsSuccess = false,
+                 ErrorMessage = "Negative Root Value"
+             };
+         }
+         else
+         {
+             _Result = new Result
+             {
+                 IsSuccess = true,
+                 Output = Math.Pow(x, 1.0 / y)
+             };
+         }
+         return _Result; //CHECK WITH PROFESSOR
     }
     
     
     //preq-ENGINE-12
-    public static double Factorial(double x)
+    public Result Factorial(double x)
     {
         double result = 1;
-        for (int i = 1; i <= x; i++)
+        if (x < 0)
         {
-            result *= i;
+            for (int i = 1; i <= x * -1; i++)
+            {
+                result *= i;
+            }
+            result *= -1;
         }
-        return result;
+        else
+        {
+            for (int i = 1; i <= x; i++)
+            {
+                result *= i;
+            }   
+        }
+        _Result = new Result
+        {
+            IsSuccess = true,
+            Output = result
+        };
+        return _Result;
     }
     
     //preq-ENGINE-13
-    public static double Sin(double x)
+    public Result Sin(double x)
     {
-        return Math.Sin(x);
+        var radians = (x * (Math.PI)) / 180;
+        _Result = new Result
+        {
+            IsSuccess = true,
+            Output = Math.Sin(radians)
+        };
+        return _Result;
     }
     
     //preq-ENGINE-14
-    public static double Cos(double x)
+    public Result Cos(double x)
     {
-        return Math.Cos(x);
+        var radians = (x * (Math.PI)) / 180;
+        _Result = new Result
+        {
+            IsSuccess = true,
+            Output = Math.Cos(radians)
+        };
+        return _Result;
     }
     
     //preq-ENGINE-15
-    public static double Tan(double x)
+    public Result Tan(double x)
     {
-        return Math.Tan(x);
+        var radians = (x * (Math.PI)) / 180;
+        _Result = new Result
+        {
+            IsSuccess = true,
+            Output = Math.Tan(radians)
+        };
+        return _Result;
     }
     
     //preq-ENGINE-16
-    public static double Reciprocal(double x)
+    public Result Reciprocal(double x)
     {
-        return 1 / x;
+        if (x == 0)
+        {
+            _Result = new Result
+            {
+                IsSuccess = false,
+                ErrorMessage = "Division by Zero"
+            };
+        }
+        else
+        {
+            _Result = new Result
+            {
+                IsSuccess = true,
+                Output = 1 / x
+            };
+        }
+        return _Result;
     }
+}
+
+public class Result
+{
+    public double Output { get; set; }
+    public bool IsSuccess { get; set; }
+    public string ErrorMessage { get; set; } = "";
 }

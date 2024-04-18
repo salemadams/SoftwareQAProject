@@ -1,0 +1,132 @@
+﻿@page "/"
+@using CalculatorEngine
+@using CalculatorWebServerApp.Components.Data
+@rendermode InteractiveServer
+
+<PageTitle>Calculator</PageTitle>
+
+<div>
+    <div>
+        <text>Calculator</text>
+        <button>Clear</button>
+        <p>@_calculatorData.Result</p>
+    </div>
+    
+    <div>
+        <text>Input A</text>
+        <input placeholder="0" @bind-value="_calculatorData.InputA"/>
+        <text>Input B</text>
+        <input placeholder="0" @bind-value="_calculatorData.InputB"/>
+    </div>
+    <section>
+        <div id="left">
+            <text>A and B</text>
+            <button class="btn btn-primary" @onclick="Add">A + B</button>
+            <button class="btn btn-primary" @onclick="Subtract">A - B</button>
+            <button class="btn btn-primary" @onclick="Multiply">A * B</button>
+            <button class="btn btn-primary" @onclick="Divide">A / B</button>
+            <button class="btn btn-primary" @onclick="Equal">A == B</button>
+            <button class="btn btn-primary" @onclick="Power">A ^ B</button>
+            <button class="btn btn-primary" @onclick="Log">A log B</button>
+            <button class="btn btn-primary" @onclick="Root">A root B</button>
+        </div>
+        <div id="right">
+            <text>A only</text>
+            <button class="btn btn-primary" @onclick="Factorial">A!</button>
+            <button class="btn btn-primary" @onclick="Sin">sinA</button>
+            <button class="btn btn-primary" @onclick="Cos">cosA</button>
+            <button class="btn btn-primary" @onclick="Tan">tanA</button>
+            <button class="btn btn-primary" @onclick="Reciprocal">1 / A</button>
+        </div>
+    </section>
+</div>
+
+@code {
+
+    CalculatorData _calculatorData = new();
+    CalculatorEngine _calculatorEngine = new();
+    
+    private void Add()
+    {
+        var result = _calculatorEngine.Add(int.Parse(_calculatorData.InputA), int.Parse(_calculatorData.InputB));
+        _calculatorData.Result = result.Output.ToString();
+    }
+
+    private void Subtract()
+    {
+        var result = _calculatorEngine.Subtract(int.Parse(_calculatorData.InputA), int.Parse(_calculatorData.InputB));
+        _calculatorData.Result = result.Output.ToString();
+    }
+
+    private void Multiply()
+    {
+        var result = _calculatorEngine.Multiply(int.Parse(_calculatorData.InputA), int.Parse(_calculatorData.InputB));
+        _calculatorData.Result = result.Output.ToString();
+    }
+
+    private void Divide()
+    {
+        var result = _calculatorEngine.Divide(int.Parse(_calculatorData.InputA), int.Parse(_calculatorData.InputB));
+        if(result.IsSuccess) _calculatorData.Result = result.Output.ToString();
+        else _calculatorData.Result = result.ErrorMessage;
+    }
+
+    private void Equal()
+    {
+        var result = _calculatorEngine.Equals(int.Parse(_calculatorData.InputA), int.Parse(_calculatorData.InputB));
+        if (result.Output == 1) _calculatorData.Result = "true";
+        else _calculatorData.Result = "false";
+    }
+
+    private void Power()
+    {
+        var result = _calculatorEngine.Power(int.Parse(_calculatorData.InputA), int.Parse(_calculatorData.InputB));
+        _calculatorData.Result = result.Output.ToString();
+    }
+
+    private void Log()
+    {
+        var result = _calculatorEngine.Log(int.Parse(_calculatorData.InputA), int.Parse(_calculatorData.InputB));
+        if (result.IsSuccess) _calculatorData.Result = result.Output.ToString();
+        else _calculatorData.Result = result.ErrorMessage;
+    }
+
+    private void Root()
+    {
+        var result = _calculatorEngine.Root(int.Parse(_calculatorData.InputA), int.Parse(_calculatorData.InputB));
+        if (result.IsSuccess) _calculatorData.Result = result.Output.ToString();
+        else _calculatorData.Result = result.ErrorMessage;
+    }
+
+    private void Factorial()
+    {
+        var result = _calculatorEngine.Factorial(int.Parse(_calculatorData.InputA));
+        _calculatorData.Result = result.Output.ToString();
+    }
+
+    private void Sin()
+    {
+        var result = _calculatorEngine.Sin(int.Parse(_calculatorData.InputA));
+        _calculatorData.Result = result.Output.ToString();
+    }
+
+    private void Cos()
+    {
+        var result = _calculatorEngine.Cos(int.Parse(_calculatorData.InputA));
+        _calculatorData.Result = result.Output.ToString();
+    }
+
+    private void Tan()
+    {
+        var result = _calculatorEngine.Tan(int.Parse(_calculatorData.InputA));
+        _calculatorData.Result = result.Output.ToString();
+    }
+
+    private void Reciprocal()
+    {
+        var result = _calculatorEngine.Reciprocal(int.Parse(_calculatorData.InputA));
+        if (result.IsSuccess) _calculatorData.Result = result.Output.ToString();
+        else _calculatorData.Result = result.ErrorMessage;
+    }
+
+}

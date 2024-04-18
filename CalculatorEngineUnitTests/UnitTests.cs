@@ -4,6 +4,20 @@ using CalculatorEngine;
 
 public class Tests
 {
+    private CalculatorEngine _calculatorEngine;
+    
+    [SetUp]
+    public void SetUp()
+    {
+        _calculatorEngine = new CalculatorEngine();
+    }
+
+    [TearDown]
+    public void TearDown()
+    {
+        _calculatorEngine = null;
+    }
+    
     [Test]  //preq-UNIT-TEST-2
     public void Add_TwoFloatingPoints_ReturnsSum()
     {
@@ -11,10 +25,10 @@ public class Tests
         double x = 10, y = 5;
         
         //act
-        double result = CalculatorEngine.Add(x, y);
+        var result = _calculatorEngine.Add(x, y);
         
         //assert
-        Assert.That(result, Is.EqualTo(15));
+        Assert.That(result.Output, Is.EqualTo(15));
     }
     
     [Test]  //preq-UNIT-TEST-3
@@ -24,10 +38,10 @@ public class Tests
         double x = 20, y = 15;
         
         //act
-        double result = CalculatorEngine.Subtract(x, y);
+        var result = _calculatorEngine.Subtract(x, y);
         
         //assert
-        Assert.That(result, Is.EqualTo(5));
+        Assert.That(result.Output, Is.EqualTo(5));
     }
 
     [Test]  //preq-UNIT-TEST-4	
@@ -37,10 +51,10 @@ public class Tests
         double x = 5, y = 20;
         
         //act
-        double result = CalculatorEngine.Multiply(x, y);
+        var result = _calculatorEngine.Multiply(x, y);
         
         //assert
-        Assert.That(result, Is.EqualTo(100));
+        Assert.That(result.Output, Is.EqualTo(100));
     }
 
     [Test]  //preq-UNIT-TEST-5	
@@ -50,10 +64,10 @@ public class Tests
         double x = 50, y = 2;
         
         //act
-        double result = CalculatorEngine.Divide(x, y);
+        var result = _calculatorEngine.Divide(x, y);
         
         //assert
-        Assert.That(result, Is.EqualTo(25));
+        Assert.That(result.Output, Is.EqualTo(25));
     }
 
     //MORE WORK
@@ -64,8 +78,11 @@ public class Tests
         //arrange
         double x = 10, y = 0;
         
+        //act
+        var result = _calculatorEngine.Divide(x, y);
+        
         //assert
-        Assert.Throws<DivideByZeroException>(() => CalculatorEngine.Divide(x, y));
+        Assert.That(result.ErrorMessage, Is.EqualTo("Division by Zero"));
     }
     
 
@@ -76,10 +93,10 @@ public class Tests
         double x = 0.888888887, y = 0.888888886;
         
         //act
-        bool result = CalculatorEngine.Equals(x, y);
+        var result = _calculatorEngine.Equals(x, y);
         
         //assert
-        Assert.That(result, Is.EqualTo(true));
+        Assert.That(result.Output, Is.EqualTo(1));
     }
 
     [Test]  //preq-UNIT-TEST-7
@@ -89,148 +106,186 @@ public class Tests
         double x = 0.8888885, y = 0.8888886;
         
         //act
-        bool result = CalculatorEngine.Equals(x, y);
+        var result = _calculatorEngine.Equals(x, y);
         
         //assert
-        Assert.That(result, Is.EqualTo(false));
+        Assert.That(result.Output, Is.EqualTo(0));
     }
 
     [Test]  //preq-UNIT-TEST-8	
-    public void CalculatorEngine_RaiseXToY_ReturnsProduct()
+    public void Power_XToY_ReturnsProduct()
     {
         //arrange
         double x = 10, y = 2;
         
         //act
-        double result = CalculatorEngine.Power(x, y);
+        var result = _calculatorEngine.Power(x, y);
         
         //assert
-        Assert.That(result, Is.EqualTo(100));
+        Assert.That(result.Output, Is.EqualTo(100));
     }
 
     [Test]  //preq-UNIT-TEST-9	
-    public void CalculatorEngine_ALogB_ReturnsExponent()
+    public void Log_TwoFloatingPoints_ReturnsExponent()
     {
         //arrange
         double x = 25, y = 5;
         
         //act
-        double result = CalculatorEngine.Log(x, y);
+        var result = _calculatorEngine.Log(x, y);
         
         //assert
-        Assert.That(result, Is.EqualTo(2));
+        Assert.That(result.Output, Is.EqualTo(2));
     }
     
     [Test]  //preq-UNIT-TEST-10
-    public void CalculatorEngine_LogOfNegative_ReturnsError()
+    public void Log_NegativeFloatingPoint_ReturnsError()
     {
         //arrange
         double x = -25, y = 5;
         
         //act
-        double result = CalculatorEngine.Log(x, y);
+        var result = _calculatorEngine.Log(x, y);
 
         //assert
-        Assert.IsTrue(double.IsNaN(result));
+        Assert.That(result.ErrorMessage, Is.EqualTo("Negative Logarithm Input"));
         
     }
     
     [Test]  //preq-UNIT-TEST-11
-    public void CalculatorEngine_ALogZero_ReturnsError()
+    public void Log_BaseZero_ReturnsError()
     {
         //arrange
         double x = 2, y = 0;
         
         //act
-        double result = CalculatorEngine.Log(x, y);
+        var result = _calculatorEngine.Log(x, y);
 
         //assert
-        Assert.IsTrue(double.IsNaN(result));
+        Assert.That(result.ErrorMessage, Is.EqualTo("Base of Zero"));
         
     }
 
     [Test] //preq-UNIT-TEST-12
-    public void CalculatorEngine_ARootB_ReturnsRoot()
+    public void Root_TwoFloatingPoints_ReturnsRoot()
     {
         //arrange
         double x = 8, y = 3;
         
         //act
-        double result = CalculatorEngine.Root(x, y);
+        var result = _calculatorEngine.Root(x, y);
 
         //assert
-        Assert.That(result, Is.EqualTo(2));
+        Assert.That(result.Output, Is.EqualTo(2));
     }
 
-    [Test] //preq-UNIT-TEST-13 CHECK WITH PROFESSOR
-    public void CalculatorEngine_ARootZero_ReturnsError()
+    [Test] //preq-UNIT-TEST-13
+    public void Root_OfZero_ReturnsError()
     {
         //arrange
         double x = 8, y = 0;
         
         //act
-        double result = CalculatorEngine.Root(x, y);
+        var result = _calculatorEngine.Root(x, y);
 
         //assert
-        Assert.IsTrue(double.IsNaN(result));
+        Assert.That(result.ErrorMessage, Is.EqualTo("Negative Root Value"));
     }
 
     [Test]  //preq-UNIT-TEST-14	
-    public void CalculatorEngine_FactorialOfX_ReturnsProduct()
+    public void Factorial_Nonzero_ReturnsProduct()
     {
         //arrange
         double x = 10;
         
         //act
-        double result = CalculatorEngine.Factorial(x);
+        var result = _calculatorEngine.Factorial(x);
         
         //assert
-        Assert.That(result, Is.EqualTo(3628800));
+        Assert.That(result.Output, Is.EqualTo(3628800));
     }
 
     [Test]  //preq-UNIT-TEST-15	
-    public void CalculatorEngine_FactorialOfZero_ReturnsOne()
+    public void Factorial_OfZero_ReturnsOne()
     {
         //arrange
         double x = 0;
         
         //act
-        double result = CalculatorEngine.Factorial(x);
+        var result = _calculatorEngine.Factorial(x);
         
         //assert
-        Assert.That(result, Is.EqualTo(1));
+        Assert.That(result.Output, Is.EqualTo(1));
     }
     //MORE WORK
-    /*
+    
     [Test] //preq-UNIT-TEST-16	
-    public void CalculatorEngine_SineOfX_ReturnsSine()
+    public void Sin_InDegrees_ReturnsRadians()
     {
         //arrange
-        double x = 360;
+        double x = 90;
         
         //act
-        double result = CalculatorEngine.Sin(x);
+        var result = _calculatorEngine.Sin(x);
         
         //assert
-        Assert.That(result, Is.EqualTo(0));
+        Assert.That(result.Output, Is.EqualTo(1));
+    }
+    
+    
+    //preq-UNIT-TEST-17	
+    [Test]
+    public void Cos_InDegrees_ReturnsRadians()
+    {
+        //arrange
+        double x = 180;
+        
+        //act
+        var result = _calculatorEngine.Cos(x);
+        
+        //assert
+        Assert.That(result.Output, Is.EqualTo(-1));
+    }
+    
+    //preq-UNIT-TEST-18
+    /*MORE WORK REQUIRED
+    [Test] 
+    public void Tan_InDegrees_ReturnsRadians()
+    {
+        //arrange
+        double x = 60;
+        
+        //act
+        var result = _calculatorEngine.Tan(x);
+        
+        //assert
+        Assert.That(result.Output, Is.EqualTo(Math.Sqrt(3)));
     }
     */
     
-    //preq-UNIT-TEST-17	FILL IN LATER
-    //preq-UNIT-TEST-18	FILL IN LATER
-
     [Test] //preq-UNIT-TEST-19	
-    public void CalculatorEngine_DivideOneByX_ReturnsReciprocal()
+    public void Reciprocal_FloatingPoint_ReturnsReciprocal()
     {
         //arrange
         double x = 10;
         
         //act
-        double result = CalculatorEngine.Reciprocal(x);
+        var result = _calculatorEngine.Reciprocal(x);
         
         //assert
-        Assert.That(result, Is.EqualTo(0.1));
+        Assert.That(result.Output, Is.EqualTo(0.1));
     }
-    
-    //preq-UNIT-TEST-20	FILL IN LATER
+
+    [Test] //preq-UNIT-TEST-20	
+    public void Reciprocal_OfZero_ReturnsError()
+    {
+        //arrange
+        double x = 0;
+        
+        //act
+        var result = _calculatorEngine.Reciprocal(x);
+        
+        //assert
+        Assert.That(result.ErrorMessage, Is.EqualTo("Division by Zero"));
+    }
 }
