@@ -1,1 +1,70 @@
-﻿
+﻿body {
+    font-family: Arial, sans-serif;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+    background-color: #f4f4f4;
+    margin: 0;
+    padding: 20px;
+}
+
+#calculator {
+    background: white;
+    padding: 20px;
+    border-radius: 8px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    width: auto;
+}
+
+#calculator p {
+    border: 1px solid #ccc;
+    background-color: #e9e9e9;
+    padding: 10px;
+    font-size: 20px;
+    text-align: right;
+    margin: 10px 0;
+    border-radius: 4px;
+}
+
+.input-fields {
+    display: flex;
+    justify-content: space-between;
+}
+
+.input-fields > div {
+    width: 48%; /* Makes space for margins/paddings */
+}
+
+#calculator input {
+    width: 100%;
+    padding: 10px;
+    margin-top: 5px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+}
+
+.buttons {
+    display: flex;
+    margin-top: 20px;
+}
+
+.column {
+    flex: 1;
+    margin-right: 10px;
+}
+
+button {
+    padding: 10px;
+    width: 100%; /* Make buttons fill their containers */
+    background-color: #007bff;
+    color: white;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    transition: background-color 0.3s;
+}
+
+button:hover {
+    background-color: #0056b3;
+}

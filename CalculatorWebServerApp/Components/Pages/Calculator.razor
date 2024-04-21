@@ -4,48 +4,50 @@
 @rendermode InteractiveServer
 
 <PageTitle>Calculator</PageTitle>
+<div id="calculator">
+    <text>Calculator</text>
+    <button @onclick="Clear">Clear</button>
+    <p>@_calculatorData.Result</p>
 
-<div>
-    <div>
-        <text>Calculator</text>
-        <button>Clear</button>
-        <p>@_calculatorData.Result</p>
+    <div class="input-fields">
+        <div>
+            <text>Input A</text>
+            <input @bind-value="_calculatorData.InputA"/>
+        </div>
+        <div>
+            <text>Input B</text>
+            <input @bind-value="_calculatorData.InputB"/>
+        </div>
     </div>
-    
-    <div>
-        <text>Input A</text>
-        <input placeholder="0" @bind-value="_calculatorData.InputA"/>
-        <text>Input B</text>
-        <input placeholder="0" @bind-value="_calculatorData.InputB"/>
-    </div>
-    <section>
-        <div id="left">
+
+    <div class="buttons">
+        <div class="column">
             <text>A and B</text>
-            <button class="btn btn-primary" @onclick="Add">A + B</button>
-            <button class="btn btn-primary" @onclick="Subtract">A - B</button>
-            <button class="btn btn-primary" @onclick="Multiply">A * B</button>
-            <button class="btn btn-primary" @onclick="Divide">A / B</button>
-            <button class="btn btn-primary" @onclick="Equal">A == B</button>
-            <button class="btn btn-primary" @onclick="Power">A ^ B</button>
-            <button class="btn btn-primary" @onclick="Log">A log B</button>
-            <button class="btn btn-primary" @onclick="Root">A root B</button>
+            <button @onclick="Add">A + B</button>
+            <button @onclick="Subtract">A - B</button>
+            <button @onclick="Multiply">A * B</button>
+            <button @onclick="Divide">A / B</button>
+            <button @onclick="Equal">A == B</button>
+            <button @onclick="Power">A ^ B</button>
+            <button @onclick="Log">A log B</button>
+            <button @onclick="Root">A root B</button>
         </div>
-        <div id="right">
+        <div class="column">
             <text>A only</text>
-            <button class="btn btn-primary" @onclick="Factorial">A!</button>
-            <button class="btn btn-primary" @onclick="Sin">sinA</button>
-            <button class="btn btn-primary" @onclick="Cos">cosA</button>
-            <button class="btn btn-primary" @onclick="Tan">tanA</button>
-            <button class="btn btn-primary" @onclick="Reciprocal">1 / A</button>
+            <button @onclick="Factorial">A!</button>
+            <button @onclick="Sin">sinA</button>
+            <button @onclick="Cos">cosA</button>
+            <button @onclick="Tan">tanA</button>
+            <button @onclick="Reciprocal">1 / A</button>
         </div>
-    </section>
+    </div>
 </div>
 
-@code {
 
+@code {
+    
     CalculatorData _calculatorData = new();
     CalculatorEngine _calculatorEngine = new();
-    
     private void Add()
     {
         var result = _calculatorEngine.Add(int.Parse(_calculatorData.InputA), int.Parse(_calculatorData.InputB));
@@ -129,4 +131,10 @@
         else _calculatorData.Result = result.ErrorMessage;
     }
 
+    private void Clear()
+    {
+        _calculatorData.Result = "0";
+        _calculatorData.InputA = "";
+        _calculatorData.InputB = "";
+    }
 }
