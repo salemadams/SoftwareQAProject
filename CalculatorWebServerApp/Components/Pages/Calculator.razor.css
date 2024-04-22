@@ -33,7 +33,7 @@
 }
 
 .input-fields > div {
-    width: 48%; /* Makes space for margins/paddings */
+    width: 48%;
 }
 
 #calculator input {
@@ -56,7 +56,7 @@
 
 button {
     padding: 10px;
-    width: 100%; /* Make buttons fill their containers */
+    width: 100%;
     background-color: #007bff;
     color: white;
     border: none;

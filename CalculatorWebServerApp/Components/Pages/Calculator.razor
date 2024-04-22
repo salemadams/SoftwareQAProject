@@ -48,85 +48,184 @@
     
     CalculatorData _calculatorData = new();
     CalculatorEngine _calculatorEngine = new();
+    
+    private static (bool Success, double InputA, double InputB) Parse(string inputA, string inputB)
+    {
+        var inputASuccess = double.TryParse(inputA, out double resultA);
+        var inputBSuccess = double.TryParse(inputB, out double resultB);
+        
+        var successfullyParsedBoth = inputASuccess && inputBSuccess;
+        
+        return (successfullyParsedBoth, 
+            inputASuccess ? resultA : double.NaN, 
+            inputBSuccess ? resultB : double.NaN);
+
+    }
     private void Add()
     {
-        var result = _calculatorEngine.Add(int.Parse(_calculatorData.InputA), int.Parse(_calculatorData.InputB));
+        var (success, inputA, inputB) = 
+            Parse(_calculatorData.InputA, _calculatorData.InputB);
+        if (!success)
+        {
+            _calculatorData.Result = "Invalid Input";
+            return;
+        }
+        var result = _calculatorEngine.Add(inputA, inputB);
         _calculatorData.Result = result.Output.ToString();
     }
 
     private void Subtract()
     {
-        var result = _calculatorEngine.Subtract(int.Parse(_calculatorData.InputA), int.Parse(_calculatorData.InputB));
+        var (success, inputA, inputB) = 
+            Parse(_calculatorData.InputA, _calculatorData.InputB);
+        if (!success)
+        {
+            _calculatorData.Result = "Invalid Input";
+            return;
+        }
+        var result = _calculatorEngine.Subtract(double.Parse(_calculatorData.InputA), double.Parse(_calculatorData.InputB));
         _calculatorData.Result = result.Output.ToString();
     }
 
     private void Multiply()
     {
-        var result = _calculatorEngine.Multiply(int.Parse(_calculatorData.InputA), int.Parse(_calculatorData.InputB));
+        var (success, inputA, inputB) = 
+            Parse(_calculatorData.InputA, _calculatorData.InputB);
+        if (!success)
+        {
+            _calculatorData.Result = "Invalid Input";
+            return;
+        }
+        var result = _calculatorEngine.Multiply(double.Parse(_calculatorData.InputA), double.Parse(_calculatorData.InputB));
         _calculatorData.Result = result.Output.ToString();
     }
 
     private void Divide()
     {
-        var result = _calculatorEngine.Divide(int.Parse(_calculatorData.InputA), int.Parse(_calculatorData.InputB));
+        var (success, inputA, inputB) = 
+            Parse(_calculatorData.InputA, _calculatorData.InputB);
+        if (!success)
+        {
+            _calculatorData.Result = "Invalid Input";
+            return;
+        }
+        var result = _calculatorEngine.Divide(double.Parse(_calculatorData.InputA), double.Parse(_calculatorData.InputB));
         if(result.IsSuccess) _calculatorData.Result = result.Output.ToString();
         else _calculatorData.Result = result.ErrorMessage;
     }
 
     private void Equal()
     {
-        var result = _calculatorEngine.Equals(int.Parse(_calculatorData.InputA), int.Parse(_calculatorData.InputB));
+        var (success, inputA, inputB) = 
+            Parse(_calculatorData.InputA, _calculatorData.InputB);
+        if (!success)
+        {
+            _calculatorData.Result = "Invalid Input";
+            return;
+        }
+        var result = _calculatorEngine.Equals(double.Parse(_calculatorData.InputA), double.Parse(_calculatorData.InputB));
         if (result.Output == 1) _calculatorData.Result = "true";
         else _calculatorData.Result = "false";
     }
 
     private void Power()
     {
-        var result = _calculatorEngine.Power(int.Parse(_calculatorData.InputA), int.Parse(_calculatorData.InputB));
+        var (success, inputA, inputB) = 
+            Parse(_calculatorData.InputA, _calculatorData.InputB);
+        if (!success)
+        {
+            _calculatorData.Result = "Invalid Input";
+            return;
+        }
+        var result = _calculatorEngine.Power(double.Parse(_calculatorData.InputA), double.Parse(_calculatorData.InputB));
         _calculatorData.Result = result.Output.ToString();
     }
 
     private void Log()
     {
-        var result = _calculatorEngine.Log(int.Parse(_calculatorData.InputA), int.Parse(_calculatorData.InputB));
+        var (success, inputA, inputB) = 
+            Parse(_calculatorData.InputA, _calculatorData.InputB);
+        if (!success)
+        {
+            _calculatorData.Result = "Invalid Input";
+            return;
+        }
+        var result = _calculatorEngine.Log(double.Parse(_calculatorData.InputA), double.Parse(_calculatorData.InputB));
         if (result.IsSuccess) _calculatorData.Result = result.Output.ToString();
         else _calculatorData.Result = result.ErrorMessage;
     }
 
     private void Root()
     {
-        var result = _calculatorEngine.Root(int.Parse(_calculatorData.InputA), int.Parse(_calculatorData.InputB));
+        var (success, inputA, inputB) = 
+            Parse(_calculatorData.InputA, _calculatorData.InputB);
+        if (!success)
+        {
+            _calculatorData.Result = "Invalid Input";
+            return;
+        }
+        var result = _calculatorEngine.Root(double.Parse(_calculatorData.InputA), double.Parse(_calculatorData.InputB));
         if (result.IsSuccess) _calculatorData.Result = result.Output.ToString();
         else _calculatorData.Result = result.ErrorMessage;
     }
 
     private void Factorial()
     {
-        var result = _calculatorEngine.Factorial(int.Parse(_calculatorData.InputA));
+        var inputASuccess = double.TryParse(_calculatorData.InputA, out double resultA);
+        if (!inputASuccess)
+        {
+            _calculatorData.Result = "Invalid A Input";
+            return;
+        }
+        var result = _calculatorEngine.Factorial(resultA);
         _calculatorData.Result = result.Output.ToString();
     }
 
     private void Sin()
     {
-        var result = _calculatorEngine.Sin(int.Parse(_calculatorData.InputA));
+        var inputASuccess = double.TryParse(_calculatorData.InputA, out double resultA);
+        if (!inputASuccess)
+        {
+            _calculatorData.Result = "Invalid A Input";
+            return;
+        }
+        var result = _calculatorEngine.Sin(resultA);
         _calculatorData.Result = result.Output.ToString();
     }
 
     private void Cos()
     {
-        var result = _calculatorEngine.Cos(int.Parse(_calculatorData.InputA));
+        var inputASuccess = double.TryParse(_calculatorData.InputA, out double resultA);
+        if (!inputASuccess)
+        {
+            _calculatorData.Result = "Invalid A Input";
+            return;
+        }
+        var result = _calculatorEngine.Cos(resultA);
         _calculatorData.Result = result.Output.ToString();
     }
 
     private void Tan()
     {
-        var result = _calculatorEngine.Tan(int.Parse(_calculatorData.InputA));
+        var inputASuccess = double.TryParse(_calculatorData.InputA, out double resultA);
+        if (!inputASuccess)
+        {
+            _calculatorData.Result = "Invalid A Input";
+            return;
+        }
+        var result = _calculatorEngine.Tan(resultA);
         _calculatorData.Result = result.Output.ToString();
     }
 
     private void Reciprocal()
     {
-        var result = _calculatorEngine.Reciprocal(int.Parse(_calculatorData.InputA));
+        var inputASuccess = double.TryParse(_calculatorData.InputA, out double resultA);
+        if (!inputASuccess)
+        {
+            _calculatorData.Result = "Invalid A Input";
+            return;
+        }
+        var result = _calculatorEngine.Reciprocal(resultA);
         if (result.IsSuccess) _calculatorData.Result = result.Output.ToString();
         else _calculatorData.Result = result.ErrorMessage;
     }
