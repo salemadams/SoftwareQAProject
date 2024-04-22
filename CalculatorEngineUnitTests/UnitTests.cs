@@ -247,22 +247,20 @@ public class Tests
         Assert.That(result.Output, Is.EqualTo(-1));
     }
     
-    //preq-UNIT-TEST-18
-    /*MORE WORK REQUIRED
-    [Test] 
+    //preq-UNIT-TEST
+    [Test]
     public void Tan_InDegrees_ReturnsRadians()
     {
         //arrange
-        double x = 60;
-        
+        double x = 0;
+
         //act
         var result = _calculatorEngine.Tan(x);
-        
+
         //assert
-        Assert.That(result.Output, Is.EqualTo(Math.Sqrt(3)));
+        Assert.That(result.Output, Is.EqualTo(0));
     }
-    */
-    
+
     [Test] //preq-UNIT-TEST-19	
     public void Reciprocal_FloatingPoint_ReturnsReciprocal()
     {

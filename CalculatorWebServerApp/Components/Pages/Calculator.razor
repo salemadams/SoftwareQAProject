@@ -67,7 +67,7 @@
             Parse(_calculatorData.InputA, _calculatorData.InputB);
         if (!success)
         {
-            _calculatorData.Result = "Invalid Input";
+            _calculatorData.Result = "Invalid Input, Numbers Only";
             return;
         }
         var result = _calculatorEngine.Add(inputA, inputB);
@@ -80,7 +80,7 @@
             Parse(_calculatorData.InputA, _calculatorData.InputB);
         if (!success)
         {
-            _calculatorData.Result = "Invalid Input";
+            _calculatorData.Result = "Invalid Input, Numbers Only";
             return;
         }
         var result = _calculatorEngine.Subtract(double.Parse(_calculatorData.InputA), double.Parse(_calculatorData.InputB));
@@ -93,7 +93,7 @@
             Parse(_calculatorData.InputA, _calculatorData.InputB);
         if (!success)
         {
-            _calculatorData.Result = "Invalid Input";
+            _calculatorData.Result = "Invalid Input, Numbers Only";
             return;
         }
         var result = _calculatorEngine.Multiply(double.Parse(_calculatorData.InputA), double.Parse(_calculatorData.InputB));
@@ -106,7 +106,7 @@
             Parse(_calculatorData.InputA, _calculatorData.InputB);
         if (!success)
         {
-            _calculatorData.Result = "Invalid Input";
+            _calculatorData.Result = "Invalid Input, Numbers Only";
             return;
         }
         var result = _calculatorEngine.Divide(double.Parse(_calculatorData.InputA), double.Parse(_calculatorData.InputB));
@@ -120,7 +120,7 @@
             Parse(_calculatorData.InputA, _calculatorData.InputB);
         if (!success)
         {
-            _calculatorData.Result = "Invalid Input";
+            _calculatorData.Result = "Invalid Input, Numbers Only";
             return;
         }
         var result = _calculatorEngine.Equals(double.Parse(_calculatorData.InputA), double.Parse(_calculatorData.InputB));
@@ -134,7 +134,7 @@
             Parse(_calculatorData.InputA, _calculatorData.InputB);
         if (!success)
         {
-            _calculatorData.Result = "Invalid Input";
+            _calculatorData.Result = "Invalid Input, Numbers Only";
             return;
         }
         var result = _calculatorEngine.Power(double.Parse(_calculatorData.InputA), double.Parse(_calculatorData.InputB));
@@ -147,7 +147,7 @@
             Parse(_calculatorData.InputA, _calculatorData.InputB);
         if (!success)
         {
-            _calculatorData.Result = "Invalid Input";
+            _calculatorData.Result = "Invalid Input, Numbers Only";
             return;
         }
         var result = _calculatorEngine.Log(double.Parse(_calculatorData.InputA), double.Parse(_calculatorData.InputB));
@@ -161,7 +161,7 @@
             Parse(_calculatorData.InputA, _calculatorData.InputB);
         if (!success)
         {
-            _calculatorData.Result = "Invalid Input";
+            _calculatorData.Result = "Invalid Input, Numbers Only";
             return;
         }
         var result = _calculatorEngine.Root(double.Parse(_calculatorData.InputA), double.Parse(_calculatorData.InputB));
@@ -174,7 +174,7 @@
         var inputASuccess = double.TryParse(_calculatorData.InputA, out double resultA);
         if (!inputASuccess)
         {
-            _calculatorData.Result = "Invalid A Input";
+            _calculatorData.Result = "Invalid Input, Numbers Only";
             return;
         }
         var result = _calculatorEngine.Factorial(resultA);
@@ -186,7 +186,7 @@
         var inputASuccess = double.TryParse(_calculatorData.InputA, out double resultA);
         if (!inputASuccess)
         {
-            _calculatorData.Result = "Invalid A Input";
+            _calculatorData.Result = "Invalid Input, Numbers Only";
             return;
         }
         var result = _calculatorEngine.Sin(resultA);
@@ -198,7 +198,7 @@
         var inputASuccess = double.TryParse(_calculatorData.InputA, out double resultA);
         if (!inputASuccess)
         {
-            _calculatorData.Result = "Invalid A Input";
+            _calculatorData.Result = "Invalid Input, Numbers Only";
             return;
         }
         var result = _calculatorEngine.Cos(resultA);
@@ -210,7 +210,7 @@
         var inputASuccess = double.TryParse(_calculatorData.InputA, out double resultA);
         if (!inputASuccess)
         {
-            _calculatorData.Result = "Invalid A Input";
+            _calculatorData.Result = "Invalid Input, Numbers Only";
             return;
         }
         var result = _calculatorEngine.Tan(resultA);
@@ -222,7 +222,7 @@
         var inputASuccess = double.TryParse(_calculatorData.InputA, out double resultA);
         if (!inputASuccess)
         {
-            _calculatorData.Result = "Invalid A Input";
+            _calculatorData.Result = "Invalid Input, Numbers Only";
             return;
         }
         var result = _calculatorEngine.Reciprocal(resultA);

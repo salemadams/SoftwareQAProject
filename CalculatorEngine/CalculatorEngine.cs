@@ -48,7 +48,7 @@ public class CalculatorEngine
             _Result = new Result
             {
                 IsSuccess = false,
-                ErrorMessage = "Division by Zero"
+                ErrorMessage = "Not a Number"
             };
         }
         else
@@ -222,7 +222,7 @@ public class CalculatorEngine
             _Result = new Result
             {
                 IsSuccess = false,
-                ErrorMessage = "Division by Zero"
+                ErrorMessage = "Not a Number"
             };
         }
         else
