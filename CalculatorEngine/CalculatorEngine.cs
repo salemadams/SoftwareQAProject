@@ -1,11 +1,12 @@
 ﻿namespace CalculatorEngine;
 
 using System;
+
 public class CalculatorEngine
 {
     private const int Precision = 8;
     private Result _Result;
-    
+
     //preq-ENGINE-3
     public Result Add(double x, double y)
     {
@@ -38,7 +39,7 @@ public class CalculatorEngine
         };
         return _Result;
     }
-    
+
     //preq-ENGINE-7
     public Result Divide(double x, double y)
     {
@@ -59,9 +60,10 @@ public class CalculatorEngine
                 Output = x / y
             };
         }
+
         return _Result;
     }
-    
+
     //preq-ENGINE-8
     public Result Equals(double x, double y)
     {
@@ -84,9 +86,10 @@ public class CalculatorEngine
                 Output = 0
             };
         }
+
         return _Result;
     }
-    
+
     //preq-ENGINE-9
     public Result Power(double x, double y)
     {
@@ -97,7 +100,7 @@ public class CalculatorEngine
         };
         return _Result;
     }
-    
+
     //preq-ENGINE-10
     public Result Log(double x, double y)
     {
@@ -125,59 +128,63 @@ public class CalculatorEngine
                 Output = Math.Log(x, y)
             };
         }
+
         return _Result;
     }
-    
+
     //preq-ENGINE-11
-     public Result Root(double x, double y)
-     {
-         if (y == 0)
-         {
-             _Result = new Result
-             {
-                 IsSuccess = false,
-                 ErrorMessage = "Negative Root Value"
-             };
-         }
-         else
-         {
-             _Result = new Result
-             {
-                 IsSuccess = true,
-                 Output = Math.Pow(x, 1.0 / y)
-             };
-         }
-         return _Result; //CHECK WITH PROFESSOR
-    }
-    
-    
-    //preq-ENGINE-12
-    public Result Factorial(double x)
+    public Result Root(double x, double y)
     {
-        double result = 1;
-        if (x < 0)
+        if (y == 0)
         {
-            for (int i = 1; i <= x * -1; i++)
+            _Result = new Result
             {
-                result *= i;
-            }
-            result *= -1;
+                IsSuccess = false,
+                ErrorMessage = "Negative Root Value"
+            };
         }
         else
         {
+            _Result = new Result
+            {
+                IsSuccess = true,
+                Output = Math.Pow(x, 1.0 / y)
+            };
+        }
+
+        return _Result; //CHECK WITH PROFESSOR
+    }
+
+
+    //preq-ENGINE-12
+    public Result Factorial(double x)
+    {
+        if (x < 0)
+        {
+            _Result = new Result()
+            {
+                IsSuccess = false,
+                ErrorMessage = "Must be NonNegative"
+            };
+        }
+        else
+        {
+            double result = 1;
             for (int i = 1; i <= x; i++)
             {
                 result *= i;
-            }   
+            }
+
+            _Result = new Result
+            {
+                IsSuccess = true,
+                Output = result
+            };
         }
-        _Result = new Result
-        {
-            IsSuccess = true,
-            Output = result
-        };
+
         return _Result;
     }
-    
+
     //preq-ENGINE-13
     public Result Sin(double x)
     {
@@ -189,7 +196,7 @@ public class CalculatorEngine
         };
         return _Result;
     }
-    
+
     //preq-ENGINE-14
     public Result Cos(double x)
     {
@@ -201,7 +208,7 @@ public class CalculatorEngine
         };
         return _Result;
     }
-    
+
     //preq-ENGINE-15
     public Result Tan(double x)
     {
@@ -213,7 +220,7 @@ public class CalculatorEngine
         };
         return _Result;
     }
-    
+
     //preq-ENGINE-16
     public Result Reciprocal(double x)
     {
@@ -233,6 +240,7 @@ public class CalculatorEngine
                 Output = 1 / x
             };
         }
+
         return _Result;
     }
 }

@@ -82,7 +82,7 @@ public class Tests
         var result = _calculatorEngine.Divide(x, y);
         
         //assert
-        Assert.That(result.ErrorMessage, Is.EqualTo("Division by Zero"));
+        Assert.That(result.ErrorMessage, Is.EqualTo("Not a Number"));
     }
     
 
@@ -217,7 +217,19 @@ public class Tests
         //assert
         Assert.That(result.Output, Is.EqualTo(1));
     }
-    //MORE WORK
+
+    [Test] //preq-UNIT-TEST-15
+    public void Factorial_OfNegative_ReturnsError()
+    {
+        //arrange
+        double x = -10;
+        
+        //act
+        var result = _calculatorEngine.Factorial(x);
+        
+        //assert
+        Assert.That(result.ErrorMessage, Is.EqualTo("Must be NonNegative"));
+    }
     
     [Test] //preq-UNIT-TEST-16	
     public void Sin_InDegrees_ReturnsRadians()
@@ -284,6 +296,6 @@ public class Tests
         var result = _calculatorEngine.Reciprocal(x);
         
         //assert
-        Assert.That(result.ErrorMessage, Is.EqualTo("Division by Zero"));
+        Assert.That(result.ErrorMessage, Is.EqualTo("Not a Number"));
     }
 }
