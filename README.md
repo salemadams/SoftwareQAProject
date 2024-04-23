@@ -14,7 +14,8 @@ This repository contains both all the source code required for the Blazor Web Ap
 ### Architecture
 There are four projects within the general solution folder; CalculatorEngine, CalculatorWebServerApp, CalculatorEngineUnitTests, and CalculatorEndToEndTests. The structure of relationships between each of these enforces single responsibility and avoids unnecessary references. There are two references to the CalculatorEngine module, which are the CalculatorWebServerApp and the CalculatorEngineUnitTests. There are no references made to the WebServerApp as well as the CalculatorEndToEndTests. 
 
-![alt text][https://www.plantuml.com/plantuml/svg/ZPHRRze-5C2VoQUmsfUW_n_jVPgcKg1gfGsoahRRL2aozcbgpTZPiSrbLR_x4ahgfCIiF138-PtxvSnOYjOjPKIbrEkbs0YLHr51sI-Q0paPKIQTf5RZHEL20KdsaWzaIfTWIX1EoAaK-QFD4K15Jr6FIMeC6L79cgfHhnJr_YD3pcF2jLj889l_wr_R_lrEEdSBYvJPBeJqTyXN9wqevFO8CXOhmU48CFdjg3H7W4Il0O_8l-ZyYFHQws06E-22CgjHKEcflUfSg8Dt8sqEtgNqaBi69WhKxAtPv-YvqLFV6B9lweqIbgHWh24hGNT_wwPkePgBS5ShTgVPQ6-MhlM5rDGAbITQA6koQx0EbPcxPTnlzJdCZiN30o0e1d6xxs6L13LtpCRD8GZJtvos0jGR_2UWhea9eiQuEJ7PR0KugGgJ831XX5OrF5FGHcyK3x6LaxWnQDdtLF_epg8Sj70AaqsX5QWcEuMy15VGKcWdvE5pQY2KS3N3OS-Lj0dE7hhij6SzcshrnrFjH3tcRVcw7X1rcbsHpuNAhjGOSWJm0LCkg3BnwqRz2qdfKIljVSiwo-tb1mg1WlMUgmCHN38o67m-FApbTdUlznqio1nm1KY6HL6lz48w85qRFQQMlhxLogAM4j14PFzvaTmAM9ke2jCpFZ1lAIZtWTU6tu8x5y6i9eeFKZqe7usRbKYwNMEPthik5qzrzTMyMrvSLkr6P4dfDXLMGdPbl2pkTy93pgTkkG0q9Lqk9J0BVEPiuMn0u-NQd6yxXY3auKxOnnGszftuKF6H18gtL3hm5sDPsEtSeb2v7xVkobIjQBNc8xbCqwJo9QkQtojo2PHBC8QSeruRmAfdJ6h7oUbB-SbJHCYZu42OG2OXggUeLjW_oQSZpaghPw2uMyg_]
+ 
+
 
 ## Environment
 This is a cross platform application that should be available on Windows 10+, Mac OSx Ventura+, and Linux Environments. However, this application has only been tested on Mac OSx Ventura and Windows 11. 
@@ -35,7 +36,8 @@ To execute and launch the Web Application:
 1. Open your terminal and navigate to the solutions installation using the `cd` command.
 2. When inside the solution folder, navigate to **CalculatorWebServerApp**
 3. Use the command `dotnet run` to launch the web server
-4. The terminal should have an output similar to this: ![CalcEngineCoverage](SoftwareQAProject\assets)
+4. The terminal should have an output similar to this: 
+ 
 5. Copy the url in the build output (in this case its `https://localhost:5000`) and paste it into your browser to connect to the web application. 
 
 ## Executing Unit Tests
@@ -49,7 +51,8 @@ To execute unit tests for this solution:
 ## Reviewing Unit Test Coverage
 With every unit test executed successfully, 100% coverage of the CalculatorEngine project is achieved. 
 
-![WebAppPortData](SoftwareQAProject\assets)
+ 
+
 
 ## Executing End-to-End Tests
 To execute playwright tests for this solution:
@@ -63,5 +66,3 @@ To execute playwright tests for this solution:
 
 
 ## Video Presentation
-
-
