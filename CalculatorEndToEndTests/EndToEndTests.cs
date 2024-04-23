@@ -1,4 +1,5 @@
 using Microsoft.Playwright;
+using Microsoft.Playwright.NUnit;
 namespace CalculatorEndToEndTests;
 
 [Parallelizable(ParallelScope.Self)]
@@ -44,7 +45,7 @@ public class Tests : PageTest
     }
 
     [Test]
-    //preq-E2E-TEST-8 NEEDS WORK
+    //preq-E2E-TEST-8
     public async Task CalculatorWebUi_AddWithText_ReturnsError()
     {
         await Page.GotoAsync("http://localhost:5000/");
@@ -57,7 +58,7 @@ public class Tests : PageTest
     }
 
     [Test]
-    //preq-E2E-TEST-9 NEEDS WORK
+    //preq-E2E-TEST-9
     public async Task CalculatorWebUi_AddAndClearValues_ReturnsEmptyString()
     {
         await Page.GotoAsync("http://localhost:5000/");

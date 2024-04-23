@@ -258,7 +258,7 @@ public class Tests
         //assert
         Assert.That(result.Output, Is.EqualTo(-1));
     }
-    
+
     //preq-UNIT-TEST
     [Test]
     public void Tan_InDegrees_ReturnsRadians()
