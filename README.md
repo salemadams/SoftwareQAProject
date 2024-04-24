@@ -57,7 +57,7 @@ To execute playwright tests for this solution:
 3. This should execute all 5 available playwright tests. The output should look like:
    `Starting test execution, please wait...
    A total of 1 test files matched the specified pattern.`
-   `Passed!  - Failed:     0, Passed:     5, Skipped:     0, Total:     5, Duration: 2 s -   `     
+   `Passed!  - Failed:     0, Passed:     5, Skipped:     0, Total:     5, Duration: 2 s -`     
    `CalculatorEndToEndTests.dll (net8.0)`
 ## Static Analysis
 
