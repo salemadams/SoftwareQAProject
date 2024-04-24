@@ -43,8 +43,8 @@ To execute unit tests for this solution:
 1. Ensure that you currently have .NET SDK 8.0 installed, this can be done by typing `dotnet --list-sdks` in the terminal. This command will show the currently installed SDKs. 
 2. Staying in the console, type in `dotnet test ProjectInstallationPath\SoftwareQAProject\CalculatorEngineUnitTests\bin\Debug\net8.0\CalculatorEngineTests.dll` and press enter. 
 3. This should execute all 21 available unit tests. The output should look like: 
-   `Starting test execution, please wait...
-   `A total of 1 test files matched the specified pattern.
+   `Starting test execution, please wait...`
+   `A total of 1 test files matched the specified pattern.`
    `Passed!  - Failed:     0, Passed:    21, Skipped:     0, Total:    21, Duration: 12 ms - CalculatorEngineUnitTests.dll (net8.0)`
 ## Reviewing Unit Test Coverage
 With every unit test executed successfully, 100% coverage of the CalculatorEngine project is achieved. 
@@ -56,8 +56,9 @@ To execute playwright tests for this solution:
 2. Staying in the console, type in `dotnet test ProjectInstallationPath\SoftwareQAProject\CalculatorEngineUnitTests\bin\Debug\net8.0\CalculatorEndToEndTests.dll` and press enter. 
 3. This should execute all 5 available playwright tests. The output should look like:
    `Starting test execution, please wait...
-   `A total of 1 test files matched the specified pattern.
-   `Passed!  - Failed:     0, Passed:     5, Skipped:     0, Total:     5, Duration: 2 s - CalculatorEndToEndTests.dll (net8.0)
+   A total of 1 test files matched the specified pattern.`
+   `Passed!  - Failed:     0, Passed:     5, Skipped:     0, Total:     5, Duration: 2 s -   `     
+   `CalculatorEndToEndTests.dll (net8.0)`
 ## Static Analysis
 
 
