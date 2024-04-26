@@ -13,6 +13,7 @@ This repository contains both all the source code required for the Blazor Web Ap
 - Salem Adams
 ### Architecture
 There are four projects within the general solution folder; CalculatorEngine, CalculatorWebServerApp, CalculatorEngineUnitTests, and CalculatorEndToEndTests. The structure of relationships between each of these enforces single responsibility and avoids unnecessary references. There are two references to the CalculatorEngine module, which are the CalculatorWebServerApp and the CalculatorEngineUnitTests. There are no references made to the WebServerApp as well as the CalculatorEndToEndTests. 
+
 ![UMLDiagram](https://github.com/salemadams/SoftwareQAProject/assets/131697693/b0185a97-2fb8-49dc-88c0-1ea0b4bbed04)
 
 ## Environment
@@ -36,16 +37,18 @@ To execute and launch the Web Application:
 3. Use the command `dotnet run` to launch the web server
 4. The terminal should have an output similar to this: 
 ![WebAppPortData](https://github.com/salemadams/SoftwareQAProject/assets/131697693/ae13a762-34ed-4644-869c-7d77ce910b4f)
-5. Copy the url in the build output (in this case its `https://localhost:5000`) and paste it into your browser to connect to the web application. 
+6. Copy the url in the build output (in this case its `https://localhost:5000`) and paste it into your browser to connect to the web application. 
 
 ## Executing Unit Tests
 To execute unit tests for this solution:
 1. Ensure that you currently have .NET SDK 8.0 installed, this can be done by typing `dotnet --list-sdks` in the terminal. This command will show the currently installed SDKs. 
 2. Staying in the console, type in `dotnet test ProjectInstallationPath\SoftwareQAProject\CalculatorEngineUnitTests\bin\Debug\net8.0\CalculatorEngineTests.dll` and press enter. 
 3. This should execute all 21 available unit tests. The output should look like: 
-   `Starting test execution, please wait...`
-   `A total of 1 test files matched the specified pattern.`
-   `Passed!  - Failed:     0, Passed:    21, Skipped:     0, Total:    21, Duration: 12 ms - CalculatorEngineUnitTests.dll (net8.0)`
+   ```
+   Starting test execution, please wait...
+   A total of 1 test files matched the specified pattern.
+   Passed!  - Failed:     0, Passed:    21, Skipped:     0, Total:    21, Duration: 12 ms - CalculatorEngineUnitTests.dll (net8.0)
+   ```
 ## Reviewing Unit Test Coverage
 With every unit test executed successfully, 100% coverage of the CalculatorEngine project is achieved. 
 ![CalcEngineCoverage](https://github.com/salemadams/SoftwareQAProject/assets/131697693/7d4d4d88-f296-4679-b34b-320e19c1cc37)
@@ -55,11 +58,10 @@ To execute playwright tests for this solution:
 1. Ensure that you currently have .NET SDK 8.0 installed, this can be done by typing `dotnet --list-sdks` in the terminal. This command will show the currently installed SDKs. 
 2. Staying in the console, type in `dotnet test ProjectInstallationPath\SoftwareQAProject\CalculatorEngineUnitTests\bin\Debug\net8.0\CalculatorEndToEndTests.dll` and press enter. 
 3. This should execute all 5 available playwright tests. The output should look like:
-   `Starting test execution, please wait...
-   A total of 1 test files matched the specified pattern.`
-   `Passed!  - Failed:     0, Passed:     5, Skipped:     0, Total:     5, Duration: 2 s -`     
-   `CalculatorEndToEndTests.dll (net8.0)`
-## Static Analysis
-
-
+   ```
+   Starting test execution, please wait...
+   A total of 1 test files matched the specified pattern.
+   Passed!  - Failed:     0, Passed:     5, Skipped:     0, Total:     5, Duration: 2 s - 
+   CalculatorEndToEndTests.dll (net8.0)
+    ```
 ## Video Presentation
