@@ -7,10 +7,11 @@ This repository contains both all the source code required for the Blazor Web Ap
 - [Executing Unit Tests](#executing-unit-tests) 
 - [Reviewing Unit Test Coverage](#reviewing-unit-test-coverage) 
 - [Executing End-to-End Tests](#executing-end-to-end-tests) 
-- [Static Analysis](#static-analysis) 
 - [Video Presentation](#video-presentation)
+  
 ### Team Members
 - Salem Adams
+
 ### Architecture
 There are four projects within the general solution folder; CalculatorEngine, CalculatorWebServerApp, CalculatorEngineUnitTests, and CalculatorEndToEndTests. The structure of relationships between each of these enforces single responsibility and avoids unnecessary references. There are two references to the CalculatorEngine module, which are the CalculatorWebServerApp and the CalculatorEngineUnitTests. There are no references made to the WebServerApp as well as the CalculatorEndToEndTests. 
 
@@ -49,6 +50,7 @@ To execute unit tests for this solution:
    A total of 1 test files matched the specified pattern.
    Passed!  - Failed:     0, Passed:    21, Skipped:     0, Total:    21, Duration: 12 ms - CalculatorEngineUnitTests.dll (net8.0)
    ```
+   
 ## Reviewing Unit Test Coverage
 With every unit test executed successfully, 100% coverage of the CalculatorEngine project is achieved. 
 ![CalcEngineCoverage](https://github.com/salemadams/SoftwareQAProject/assets/131697693/7d4d4d88-f296-4679-b34b-320e19c1cc37)
@@ -56,7 +58,7 @@ With every unit test executed successfully, 100% coverage of the CalculatorEngin
 ## Executing End-to-End Tests
 To execute playwright tests for this solution:
 1. Ensure that you currently have .NET SDK 8.0 installed, this can be done by typing `dotnet --list-sdks` in the terminal. This command will show the currently installed SDKs. 
-2. Staying in the console, type in `dotnet test ProjectInstallationPath\SoftwareQAProject\CalculatorEngineUnitTests\bin\Debug\net8.0\CalculatorEndToEndTests.dll` and press enter. 
+2. Staying in the console, run the following command: `dotnet test ProjectInstallationPath\SoftwareQAProject\CalculatorEngineUnitTests\bin\Debug\net8.0\CalculatorEndToEndTests.dll` 
 3. This should execute all 5 available playwright tests. The output should look like:
    ```
    Starting test execution, please wait...
@@ -64,4 +66,5 @@ To execute playwright tests for this solution:
    Passed!  - Failed:     0, Passed:     5, Skipped:     0, Total:     5, Duration: 2 s - 
    CalculatorEndToEndTests.dll (net8.0)
     ```
+   
 ## Video Presentation
