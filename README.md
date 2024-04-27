@@ -22,7 +22,7 @@ This is a cross platform application that should be available on Windows 10+, Ma
 
 To prepare your environment to execute this application:
 1. Install .NET SDK 8.0 on your system (https://dotnet.microsoft.com/en-us/download/dotnet/8.0)
-2. Ensure the ASP.NET Core runtime is installed. This is typically part of the SDK but it can be installed separately if needed. 
+2. Ensure the ASP.NET Core runtime is installed. This is typically part of the SDK but it can be installed separately if needed.
 
 To configure your environment for NUnit testing:
 - Install NUnit from (https://nunit.org/) or use a package manager such as NuGet (https://www.nuget.org/packages?q=Nunit) to install it. 
@@ -31,12 +31,14 @@ To configure your environment for Playwright testing:
 1. Install PowerShell 7 for your respective OS (https://learn.microsoft.com/en-us/powershell/scripting/install/installing-powershell-on-windows?view=powershell-7.4).
 2. Execute the command `dotnet tool install --global Microsoft.Playwright.CLI` in the terminal.
 3. Using the terminal command `cd`, navigate to the **CalculatorEndToEndTests** folder. Then execute the command `playwright install`.
+   
 ## Executing the Web Application
 To execute and launch the Web Application:
 1. Open your terminal and navigate to the solutions installation using the `cd` command.
-2. When inside the solution folder, navigate to **CalculatorWebServerApp**
-3. Use the command `dotnet run` to launch the web server
-4. The terminal should have an output similar to this: 
+2. First, use the command `dotnet build` to build the solution before executing. 
+3. Next navigate to **CalculatorWebServerApp**
+4. Use the command `dotnet run` to launch the web server
+5. The terminal should have an output similar to this: 
 ![WebAppPortData](https://github.com/salemadams/SoftwareQAProject/assets/131697693/ae13a762-34ed-4644-869c-7d77ce910b4f)
 6. Copy the url in the build output (in this case its `https://localhost:5000`) and paste it into your browser to connect to the web application. 
 
